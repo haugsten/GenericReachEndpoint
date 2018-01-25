@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using GenericReachEndpoint.Models;
 using GenericReachEndpoint.Security;
 using Microsoft.AspNetCore.Mvc;
@@ -29,8 +30,9 @@ namespace GenericReachEndpoint.Controllers
 
         public class MessageObject
         {
+            [Required]
             public string Recipient { get; set; }
-            public long TriggerFireId { get; set; }
+            public string TriggerFireId { get; set; }
             public string MessageId { get; set; }
         }
     }
