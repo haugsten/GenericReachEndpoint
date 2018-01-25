@@ -33,9 +33,9 @@ namespace GenericReachEndpoint.Controllers
         }
 
         
-        [HttpDelete("api/1.0/groups/{groupId}/recipients")]
+        [HttpDelete("api/1.0/groups/{groupId}/recipients/{recipient}")]
         [RequireKey]
-        public async void Delete(string groupId, [FromBody] DeleteRecipientObject message)
+        public async void Delete(string groupId, string recipient)
         {
             var entity = new LogMessage()
             {
@@ -44,15 +44,10 @@ namespace GenericReachEndpoint.Controllers
                 Timestamp = DateTime.Now,
                 Action = "Remove from group",
                 GroupId = groupId,
-                Body = message
+                Body = recipient
             };
 
             await DocumentDbRepository<LogMessage>.CreateItemAsync(entity);
-        }
-
-        public class DeleteRecipientObject
-        {
-            public string Recipient { get; set; }
-        }
+        }       
     }
 }
