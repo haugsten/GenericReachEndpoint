@@ -11,6 +11,13 @@ namespace GenericReachEndpoint.Controllers
     public class MessagesController : Controller
     {
         
+        private readonly IRepository _repository;
+
+        public MessagesController(IRepository repository)
+        {
+            _repository = repository;
+        }
+
         [HttpPost]
         [RequireKey]
         public async void Post([FromBody] MessageObject message)
@@ -25,7 +32,7 @@ namespace GenericReachEndpoint.Controllers
                 Body = message
             };
 
-            await DocumentDbRepository<LogMessage>.CreateItemAsync(entity);
+            await _repository.CreateItemAsync(entity);
         }
 
         public class MessageObject

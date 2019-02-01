@@ -9,6 +9,13 @@ namespace GenericReachEndpoint.Controllers
     public class GroupsController : Controller
     {
 
+        private readonly IRepository _repository;
+
+        public GroupsController(IRepository repository)
+        {
+            _repository = repository;
+        }
+
         [HttpPost("api/1.0/groups/{groupId}/recipients")]
         [RequireKey]
         public async void Post(string groupId, [FromBody] AddRecipientObject message)
@@ -23,7 +30,7 @@ namespace GenericReachEndpoint.Controllers
                 Body = message
             };
 
-            await DocumentDbRepository<LogMessage>.CreateItemAsync(entity);
+            await _repository.CreateItemAsync(entity);
         }
 
         public class AddRecipientObject
@@ -47,7 +54,7 @@ namespace GenericReachEndpoint.Controllers
                 Body = recipient
             };
 
-            await DocumentDbRepository<LogMessage>.CreateItemAsync(entity);
+            await _repository.CreateItemAsync(entity);
         }       
     }
 }

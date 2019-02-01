@@ -8,6 +8,13 @@ namespace GenericReachEndpoint.Controllers
     [Route("api/1.0/[controller]")]
     public class TestController : Controller
     {
+        private readonly IRepository _repository;
+
+        public TestController(IRepository repository)
+        {
+            _repository = repository;
+        }
+
 
         [HttpPost]
         [RequireKey]
@@ -22,7 +29,7 @@ namespace GenericReachEndpoint.Controllers
                 Body = message
             };
 
-            await DocumentDbRepository<LogMessage>.CreateItemAsync(entity);
+            await _repository.CreateItemAsync(entity);
         }
 
         public class TestObject
