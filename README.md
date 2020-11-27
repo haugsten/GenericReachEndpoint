@@ -1,1 +1,1 @@
-Test endpoint for Episerver Generic ESP Endpoint
+Proof of concept endpoint for Episerver Generic ESP Endpoint
