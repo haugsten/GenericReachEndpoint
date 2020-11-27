@@ -20,8 +20,8 @@ namespace GenericReachEndpoint.Security
 
         private readonly IEnumerable<string> _keys = new List<string>
         {
-            "rdGSYmdhDmpwbJ8Sq52qntVH", // Episerver uk
-            "dTmp3R7MKmZrYGcTXKfYYTs4", // Haakon
+            "rdGSYmdhDmpwbJ8Sq52qntVH", 
+            "dTmp3R7MKmZrYGcTXKfYYTs4", 
             "965rbJNNqhwCVqEQgtDm58ey",
             "ZGXW239aAQPsWGgXryKqeQze",
             "urcbw9pyyKAtkrG6wjMRPkaw",

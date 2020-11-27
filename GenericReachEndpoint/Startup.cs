@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using GenericReachEndpoint.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,8 +32,7 @@ namespace GenericReachEndpoint
                 c.SwaggerDoc("v1", new Info { Title = "Generic Reach Endpoint", Version = "v1" });
             });
 
-            services.AddSingleton(Configuration.GetSection("applicationconfiguration").Get<ApplicationConfiguration>())
-                    .AddSingleton<IRepository, InMemoryRepository>();
+            services.AddSingleton<IRepository, InMemoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,17 +60,6 @@ namespace GenericReachEndpoint
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true);
 
             var configuration = builder.Build();
-        }
-    }
-
-    public class ApplicationConfiguration
-    {
-        public CosmosDb Db { get; set; }
-
-        public class CosmosDb
-        {
-            public string Host { get; set; }
-            public string Key { get; set; }        
         }
     }
 }
