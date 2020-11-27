@@ -1,1 +1,1 @@
-Test endpoint for the Episerver Generic Reach Endpoint
+Test endpoint for Episerver Generic ESP Endpoint
